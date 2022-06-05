@@ -2,10 +2,14 @@
 
 void DisplayLine(char TableGame[][10], char TableAll[])
 {
+    couleur_char (VERT);
     printf("Voici votre grille: \n");
+    couleur_char (BLANC);
     printf(" %c %c %c %c %c %c %c %c %c %c \n", TableAll[0], TableAll[1], TableAll[2], TableAll[3], TableAll[4], TableAll[5], TableAll[6], TableAll[7], TableAll[8], TableAll[9]);
+    couleur_char (CYAN);
     for (int i = 0; i < 10; i++)
         printf("|%c|%c|%c|%c|%c|%c|%c|%c|%c|%c|\n", TableGame[0][i], TableGame[1][i], TableGame[2][i], TableGame[3][i], TableGame[4][i], TableGame[5][i], TableGame[6][i], TableGame[7][i], TableGame[8][i], TableGame[9][i]);
+    couleur_char (BLANC);
 }
 int SearchColumn(char Letter, char TableAll[10], int piece)
 {
@@ -650,101 +654,14 @@ void DisplayBest(char FileName[])
         }
     }
     fclose(fichier);
-
+    couleur_char (ROUGE);
     printf("Meilleur score est : %d pour le joueur : %s\n", score, PlayerName);
+    couleur_char (BLANC);
 }
-int convertirTemps()
+int RandomOrientation()
 {
-    time_t t = time(NULL);
-  struct tm tm = *localtime(&t);
-
-    char Date[10];
-    SauvgarderDate();
-    GetDate(Date);
-    int Time = 0;
-    if (Date[6] == '0')
-    {
-        Time += 0;
-    }
-    if (Date[6] == '1')
-    {
-        Time += 10;
-    }
-    if (Date[6] == '2')
-    {
-        Time += 20;
-    }
-    if (Date[6] == '3')
-    {
-        Time += 30;
-    }
-    if (Date[6] == '4')
-    {
-        Time += 40;
-    }
-    if (Date[6] == '5')
-    {
-        Time += 50;
-    }
-
-    if (Date[7] == '0')
-    {
-        Time += 0;
-    }
-    if (Date[7] == '1')
-    {
-        Time += 1;
-    }
-    if (Date[7] == '2')
-    {
-        Time += 2;
-    }
-    if (Date[7] == '3')
-    {
-        Time += 3;
-    }
-    if (Date[7] == '4')
-    {
-        Time += 4;
-    }
-    if (Date[7] == '5')
-    {
-        Time += 5;
-    }
-    if (Date[7] == '6')
-    {
-        Time += 6;
-    }
-    if (Date[7] == '7')
-    {
-        Time += 7;
-    }
-    if (Date[7] == '8')
-    {
-        Time += 8;
-    }
-    if (Date[7] == '9')
-    {
-        Time += 9;
-    }
-    return tm.tm_sec;
-}
-void SauvgarderDate()
-{
-    time_t t;
-    time(&t);
-    FILE *fichier = NULL;
-    fichier = fopen("Date.txt", "w");
-    fprintf(fichier, "%s\n", ctime(&t));
-    fclose(fichier);
-}
-void GetDate(char Date[])
-{
-    char Date1[10];
-    char Date2[10];
-    char Date3[10];
-     FILE *fichier = NULL;
-    fichier = fopen("Date.txt", "a+");
-        fscanf(fichier, "%s %s %s %s", Date1,Date2,Date3,Date);
-    fclose(fichier);
+int i ;
+srand(time(NULL));
+i=(rand()%4);
+ return i ;
 }

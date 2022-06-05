@@ -9,7 +9,6 @@ void main()
     int FinalScore = 0;
     char NamePlayer[20];
     int PositionFull;
-    int TAV = 0, TAP = 0;
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -20,19 +19,31 @@ void main()
     int piece;
     char Column;
     int orientation;
+    int mode;
+    do
+    {
+        couleur_char(VERT);
+        printf("Choisir le mode de difficulte : 1-facile 2 difficile :\n");
+        couleur_char(BLANC);
+        scanf("%d", &mode);
+    } while (mode < 1 || mode > 2);
 
     do
     {
+        couleur_char(VERT);
         printf("Saisir votre Nom\n");
+        couleur_char(BLANC);
         scanf("%s", NamePlayer);
-    } while (strlen(NamePlayer) <= 4);
+    } while (strlen(NamePlayer) <= 1);
     do
     {
         piece = RandomPiece();
         DisplayLine(TableGame, TableAll);
         do
         {
+            couleur_char(VERT);
             printf("Choisi l'orientation de la piece:\n");
+            couleur_char(BLANC);
             printf("  1        2        3        4\n");
             if (piece == 0)
             {
@@ -63,33 +74,42 @@ void main()
                 DisplayPieceO();
             }
 
-           // TAV = convertirTemps();
+            time_t begin = time(NULL);
             scanf("%d", &orientation);
-            //TAP = convertirTemps();
-           /* if((TAP-TAV)>=5)
+            time_t end = time(NULL);
+            unsigned long secondes = (unsigned long)difftime(end, begin);
+            if (mode = 1)
             {
-             orientation=1;
-            }*/
+                if (secondes >= 15)
+                {
+                    orientation = RandomOrientation() + 1;
+                }
+            }
+            if (mode = 2)
+            {
+                if (secondes >= 8)
+                {
+                    orientation = RandomOrientation() + 1;
+                }
+            }
 
         } while (orientation < 1 || orientation > 4);
         do
         {
+            couleur_char(VERT);
             printf("Choisir la Colonne :\n");
+            couleur_char(BLANC);
             scanf("%c", &Column);
             PositionFull = PartPosition(Column, TableGame, TableAll, orientation, piece);
-        } while (Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J' && Column != 'I' && Column != 'Q');
+        } while (Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J' && Column != 'Q');
         Score = CalculScore(TableGame, TableFull);
         FinalScore += Score;
 
         if (PositionFull == 1)
         {
-            Column = 'Q';
-        }
-        if (Column == 'Q')
-        {
             SaveScore(NamePlayer, FinalScore);
             DisplayBest("Score.txt");
+            Column = 'Q';
         }
-
     } while (Column != 'Q');
 }

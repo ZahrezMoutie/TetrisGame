@@ -9,7 +9,7 @@ void DisplayPieceT()
 }
 void DisplayPieceZ()
 {
-    couleur_char (ROUGE);
+    couleur_char (VERT);
     printf(" @@        @@       @        @ \n");
     printf("  @@      @@        @@      @@     \n");
     printf("                     @      @\n");
@@ -17,7 +17,7 @@ void DisplayPieceZ()
 }
 void DisplayPieceS()
 {
-    couleur_char (ROUGE);
+    couleur_char (ORANGE);
     printf("  @@      @@        @        @\n");
     printf(" @@        @@       @@      @@ \n");
     printf("                     @      @ \n");
@@ -25,7 +25,7 @@ void DisplayPieceS()
 }
 void DisplayPieceO()
 {
-    couleur_char (ROUGE);
+    couleur_char (BLEU);
     printf(" @@        @@       @@       @@\n");
     printf(" @@        @@       @@       @@\n");
     couleur_char (BLANC);
@@ -33,7 +33,7 @@ void DisplayPieceO()
 }
 void DisplayPieceJ()
 {
-    couleur_char (ROUGE);
+    couleur_char (MAGENTA);
     printf("  @        @@     @          @@@\n");
     printf("  @        @      @@@          @\n");
     printf(" @@        @                 \n");
@@ -41,7 +41,7 @@ void DisplayPieceJ()
 }
 void DisplayPieceL()
 {
-    couleur_char (ROUGE);
+    couleur_char (CYAN);
     printf("  @       @@        @        @@@\n");
     printf("  @        @      @@@        @\n");
     printf("  @@       @                 \n");

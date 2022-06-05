@@ -47,6 +47,4 @@ void DisplayBest (char FileName[]);
 Open the file to read all the scores and display the best one with player's name.
                +FileName : String for the name of file. example(Tetris.txt).
 */
-int convertirTemps();
-void SauvgarderDate();
-void GetDate(char Date[]);
+int RandomOrientation();
