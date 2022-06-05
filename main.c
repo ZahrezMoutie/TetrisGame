@@ -24,6 +24,7 @@ void main()
     int mode;
     char modeS[20];
     unsigned long secondess, secondes;
+    int pos;
     do
     {
         mode = 0;
@@ -130,55 +131,66 @@ void main()
             }
 
         } while (orientation < 1 || orientation > 4);
+
         do
         {
-            do
+
+            couleur_char(VERT);
+            printf("Choisir la Colonne :\n");
+            couleur_char(BLANC);
+            time_t begin = time(NULL);
+            scanf("%s", ColumnS);
+            time_t end = time(NULL);
+            secondess = (unsigned long)difftime(end, begin);
+            if (strlen(ColumnS) != 1)
             {
-
-                couleur_char(VERT);
-                printf("Choisir la Colonne :\n");
+                Column = 'Z';
+            }
+            else
+                Column = ColumnS[0];
+            if (mode == 1)
+            {
+                if (secondess >= 15)
+                {
+                    couleur_char(ROUGE);
+                    printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
+                    couleur_char(BLANC);
+                    Column = RandomColumn();
+                }
+            }
+            if (mode == 2)
+            {
+                if (secondess >= 8)
+                {
+                    couleur_char(ROUGE);
+                    printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
+                    couleur_char(BLANC);
+                    Column = RandomColumn();
+                }
+            }
+            pos = 0;
+            PositionFull = PartPosition(Column, TableGame, TableAll, orientation, piece);
+            if (PositionFull == 2)
+            {
+                couleur_char(ROUGE);
+                printf("Impossible de placer la piece !! Merci de vous repetez\n");
                 couleur_char(BLANC);
-                time_t begin = time(NULL);
-                scanf("%s", ColumnS);
-                time_t end = time(NULL);
-                secondess = (unsigned long)difftime(end, begin);
-                if (strlen(ColumnS) != 1)
-                {
-                    Column = 'Z';
-                }
-                else
-                    Column = ColumnS[0];
-                if (mode == 1)
-                {
-                    if (secondess >= 15)
-                    {
-                        couleur_char(ROUGE);
-                        printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
-                        couleur_char(BLANC);
-                        Column = RandomColumn();
-                    }
-                }
-                if (mode == 2)
-                {
-                    if (secondess >= 8)
-                    {
-                        couleur_char(ROUGE);
-                        printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
-                        couleur_char(BLANC);
-                        Column = RandomColumn();
-                    }
-                }
+                pos = 1;
+            }
+        } while (pos != 1 && Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J' && Column != 'I' && Column != 'Q');
 
-                PositionFull = PartPosition(Column, TableGame, TableAll, orientation, piece);
-            } while (PositionFull != 0);
-        } while (Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J');
         Score = CalculScore(TableGame, TableFull);
         FinalScore += Score;
 
         if (PositionFull == 1)
         {
+            Column = 'Q';
+        }
+        if (Column == 'Q')
+        {
             SaveScore(NamePlayer, FinalScore);
             DisplayBest("Score.txt");
         }
-    } while (PositionFull != 1);
+
+    } while (Column != 'Q');
 }

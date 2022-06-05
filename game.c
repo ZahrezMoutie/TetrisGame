@@ -408,7 +408,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
 
             tab[index][index1 + 1] = '@';
@@ -420,7 +420,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
 
             tab[index][index1] = '@';
@@ -432,7 +432,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
 
             tab[index][index1] = '@';
@@ -444,7 +444,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
 
             tab[index + 1][index1] = '@';
@@ -465,7 +465,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
@@ -476,7 +476,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
@@ -487,7 +487,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -498,7 +498,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
@@ -518,7 +518,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
@@ -529,7 +529,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
@@ -540,7 +540,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -551,7 +551,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
@@ -571,7 +571,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 2] = '@';
             tab[index + 1][index1] = '@';
@@ -582,7 +582,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index + 1][index1] = '@';
             tab[index][index1] = '@';
@@ -593,7 +593,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -604,7 +604,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
@@ -624,7 +624,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -635,7 +635,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -646,7 +646,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -657,7 +657,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -684,7 +684,7 @@ place the pieces in their places.
         {
             if (Colonne == 'J' || Colonne == 'I' || Colonne == 'H')
             {
-                return 0;
+                return 2;
             }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
@@ -696,7 +696,7 @@ place the pieces in their places.
     {
         if (Colonne == 'J')
         {
-            return 0;
+            return 2;
         }
 
         int index = SearchColumn(Colonne, tabAL, 6);
