@@ -9,8 +9,8 @@ void main()
     int FinalScore = 0;
     char NamePlayer[20];
     int PositionFull;
-    char orientationChar[2];
-    char ColumnS[2];
+    char orientationChar[20];
+    char ColumnS[20];
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -22,13 +22,23 @@ void main()
     char Column;
     int orientation;
     int mode;
+    char modeS[20];
     unsigned long secondess, secondes;
     do
     {
+        mode = 0;
         couleur_char(VERT);
         printf("Choisir le mode de difficulte : 1-facile 2 difficile :\n");
         couleur_char(BLANC);
-        scanf("%d", &mode);
+        scanf("%s", modeS);
+        if (modeS[0] == '1' && strlen(modeS) == 1)
+        {
+            mode = 1;
+        }
+        if (modeS[0] == '2' && strlen(modeS) == 1)
+        {
+            mode = 2;
+        }
     } while (mode < 1 || mode > 2);
 
     do
@@ -82,56 +92,86 @@ void main()
             time_t end = time(NULL);
             secondes = (unsigned long)difftime(end, begin);
 
-            if (orientationChar[0] == '1')
+            if (orientationChar[0] == '1' && strlen(orientationChar) == 1)
             {
                 orientation = 1;
             }
-            if (orientationChar[0] == '2')
+            if (orientationChar[0] == '2' && strlen(orientationChar) == 1)
             {
                 orientation = 2;
             }
-            if (orientationChar[0] == '3')
+            if (orientationChar[0] == '3' && strlen(orientationChar) == 1)
             {
                 orientation = 3;
             }
-            if (orientationChar[0] == '4')
+            if (orientationChar[0] == '4' && strlen(orientationChar) == 1)
             {
                 orientation = 4;
+            }
+            if (mode == 1)
+            {
+                if ((secondes) >= 15)
+                {
+                    couleur_char(ROUGE);
+                    printf("    Tu as mis trop de temps !! L'orientation a ete choisi au hasard. \n");
+                    couleur_char(BLANC);
+                    orientation = RandomOrientation() + 1;
+                }
+            }
+            if (mode == 2)
+            {
+                if ((secondes) >= 8)
+                {
+                    couleur_char(ROUGE);
+                    printf("    Tu as mis trop de temps !! L'orientation a ete choisi au hasard. \n");
+                    couleur_char(BLANC);
+                    orientation = RandomOrientation() + 1;
+                }
             }
 
         } while (orientation < 1 || orientation > 4);
         do
         {
-            couleur_char(VERT);
-            printf("Choisir la Colonne :\n");
-            couleur_char(BLANC);
-            time_t begin = time(NULL);
-            scanf("%s", ColumnS);
-            time_t end = time(NULL);
-            secondess = (unsigned long)difftime(end, begin);
-            if (mode = 1)
+            do
             {
-                if ((secondes + secondess) >= 30)
+
+                couleur_char(VERT);
+                printf("Choisir la Colonne :\n");
+                couleur_char(BLANC);
+                time_t begin = time(NULL);
+                scanf("%s", ColumnS);
+                time_t end = time(NULL);
+                secondess = (unsigned long)difftime(end, begin);
+                if (strlen(ColumnS) != 1)
                 {
-                    couleur_char(ROUGE);
-                    printf("    Tu as mis beaucoup de temps !! La colonne va etre choisi au hasard. \n");
-                    couleur_char(BLANC);
-                    orientation = RandomOrientation() + 1;
+                    Column = 'Z';
                 }
-            }
-            if (mode = 2)
-            {
-                if ((secondes + secondess) >= 16)
+                else
+                    Column = ColumnS[0];
+                if (mode == 1)
                 {
-                    couleur_char(ROUGE);
-                    printf("    Tu as mis beaucoup de temps !! La colonne va etre choisi au hasard. \n");
-                    couleur_char(BLANC);
-                    orientation = RandomOrientation() + 1;
+                    if (secondess >= 15)
+                    {
+                        couleur_char(ROUGE);
+                        printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
+                        couleur_char(BLANC);
+                        Column = RandomColumn();
+                    }
                 }
-            }
-            Column = ColumnS[0];
-            PositionFull = PartPosition(Column, TableGame, TableAll, orientation, piece);
-        } while (Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J' && Column != 'Q' && PositionFull != 0);
+                if (mode == 2)
+                {
+                    if (secondess >= 8)
+                    {
+                        couleur_char(ROUGE);
+                        printf("    Tu as mis trop de temps !! La colonne a ete choisi au hasard. \n");
+                        couleur_char(BLANC);
+                        Column = RandomColumn();
+                    }
+                }
+
+                PositionFull = PartPosition(Column, TableGame, TableAll, orientation, piece);
+            } while (PositionFull != 0);
+        } while (Column != 'A' && Column != 'B' && Column != 'C' && Column != 'D' && Column != 'E' && Column != 'F' && Column != 'G' && Column != 'H' && Column != 'J');
         Score = CalculScore(TableGame, TableFull);
         FinalScore += Score;
 
@@ -139,7 +179,6 @@ void main()
         {
             SaveScore(NamePlayer, FinalScore);
             DisplayBest("Score.txt");
-            Column = 'Q';
         }
-    } while (Column != 'Q');
+    } while (PositionFull != 1);
 }

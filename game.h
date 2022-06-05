@@ -48,3 +48,4 @@ Open the file to read all the scores and display the best one with player's name
                +FileName : String for the name of file. example(Tetris.txt).
 */
 int RandomOrientation(); // To choose a random Orientation
+char RandomColumn(); // To choose a random Column

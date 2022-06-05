@@ -804,3 +804,38 @@ int RandomOrientation() // To choose a random Orientation
     i = (rand() % 4);
     return i;
 }
+char RandomColumn() // To choose a random Column
+{
+    int i;
+    srand(time(NULL));
+    i = (rand() % 7);
+    if(i==0)
+    {
+      return 'A';
+    }
+        if(i==1)
+    {
+      return 'B';
+    }
+        if(i==2)
+    {
+      return 'C';
+    }
+        if(i==3)
+    {
+      return 'D';
+    }
+        if(i==4)
+    {
+      return 'E';
+    }
+        if(i==5)
+    {
+      return 'F';
+    }
+        if(i==6)
+    {
+      return 'G';
+    }
+    
+}
