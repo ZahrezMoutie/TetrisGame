@@ -1,5 +1,5 @@
 #include "headers.h"
-void DisplayPieceT()
+void DisplayPieceT() // To display piece T
 {
     couleur_char (ROUGE);
     printf("  @        @       @@@       @\n");
@@ -7,7 +7,7 @@ void DisplayPieceT()
     printf("  @        @                 \n");
     couleur_char (BLANC);
 }
-void DisplayPieceZ()
+void DisplayPieceZ() // To display piece Z
 {
     couleur_char (VERT);
     printf(" @@        @@       @        @ \n");
@@ -15,7 +15,7 @@ void DisplayPieceZ()
     printf("                     @      @\n");
     couleur_char (BLANC);
 }
-void DisplayPieceS()
+void DisplayPieceS() // To display piece S
 {
     couleur_char (ORANGE);
     printf("  @@      @@        @        @\n");
@@ -23,7 +23,7 @@ void DisplayPieceS()
     printf("                     @      @ \n");
     couleur_char (BLANC);
 }
-void DisplayPieceO()
+void DisplayPieceO() // To display piece O
 {
     couleur_char (BLEU);
     printf(" @@        @@       @@       @@\n");
@@ -31,7 +31,7 @@ void DisplayPieceO()
     couleur_char (BLANC);
 
 }
-void DisplayPieceJ()
+void DisplayPieceJ() // To display piece J
 {
     couleur_char (MAGENTA);
     printf("  @        @@     @          @@@\n");
@@ -39,7 +39,7 @@ void DisplayPieceJ()
     printf(" @@        @                 \n");
     couleur_char (BLANC);
 }
-void DisplayPieceL()
+void DisplayPieceL() // To display piece L
 {
     couleur_char (CYAN);
     printf("  @       @@        @        @@@\n");
@@ -47,7 +47,7 @@ void DisplayPieceL()
     printf("  @@       @                 \n");
     couleur_char (BLANC);
 }
-void DisplayPieceI()
+void DisplayPieceI() // To display piece I
 {
     couleur_char (ROUGE);
     printf("  @        @       @@@@       @@@@\n");
@@ -56,7 +56,7 @@ void DisplayPieceI()
     printf("  @        @                 \n");
     couleur_char (BLANC);
 }
-int RandomPiece()
+int RandomPiece() // To choose a random piece
 {
 int i ;
 srand(time(NULL));

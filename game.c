@@ -2,17 +2,30 @@
 
 void DisplayLine(char TableGame[][10], char TableAll[])
 {
-    couleur_char (VERT);
+    /*
+    To display the grid.
+              +TableGame : Table to save the pieces in the grid (TableGame[i] maybe equal to @ or space);
+              +TableAll  : Table have the letter for all columns of the grid.
+    */
+
+    couleur_char(VERT);
     printf("Voici votre grille: \n");
-    couleur_char (BLANC);
+    couleur_char(BLANC);
     printf(" %c %c %c %c %c %c %c %c %c %c \n", TableAll[0], TableAll[1], TableAll[2], TableAll[3], TableAll[4], TableAll[5], TableAll[6], TableAll[7], TableAll[8], TableAll[9]);
-    couleur_char (CYAN);
+    couleur_char(CYAN);
     for (int i = 0; i < 10; i++)
         printf("|%c|%c|%c|%c|%c|%c|%c|%c|%c|%c|\n", TableGame[0][i], TableGame[1][i], TableGame[2][i], TableGame[3][i], TableGame[4][i], TableGame[5][i], TableGame[6][i], TableGame[7][i], TableGame[8][i], TableGame[9][i]);
-    couleur_char (BLANC);
+    couleur_char(BLANC);
 }
 int SearchColumn(char Letter, char TableAll[10], int piece)
 {
+    /*
+    To find the column when the player choose a letter.
+                  +TableAll  : Table have the letter for all columns of the grid.
+                  +Letter    : Letter of the column where the player like put the piece.0
+                  +piece     : integer between 0 and 6 have the piece's number.
+    */
+
     int i;
     if (piece == 0)
     {
@@ -87,6 +100,15 @@ int SearchColumn(char Letter, char TableAll[10], int piece)
 }
 int SearchLine(int index, char TableGame[10][10], int piece, int orientation)
 {
+
+    /*
+    To find the line where put the piece.
+                  +TableGame : Table to save the pieces in the grid (TableGame[i] maybe equal to @ or space).
+                  +piece     : integer between 0 and 6 have the piece's number.
+                  +orientation  : integer between 1 and 4 have the piece's shape.
+                  +index     : an integer have the number of column.
+    */
+
     int i, j, test = 8, test1 = 7, test2 = 6, test3 = 9;
     if (piece == 0)
     {
@@ -363,6 +385,16 @@ int SearchLine(int index, char TableGame[10][10], int piece, int orientation)
 }
 int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation, int piece)
 {
+
+    /*
+place the pieces in their places.
+          +TableGame : Table to save the pieces in the grid (TableGame[i] maybe equal to @ or space);
+          +TableAll  : Table have the letter for all columns of the grid.
+          +piece     : integer between 0 and 6 have the piece's number.
+          +orientation  : integer between 1 and 4 have the piece's shape.
+          +Column  : Letter of column.
+
+*/
     int test = 0;
     if (piece == 0)
     {
@@ -374,6 +406,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 1)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
 
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
@@ -382,6 +418,11 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 2)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
+
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
@@ -389,6 +430,11 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
+
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 2][index1] = '@';
@@ -396,6 +442,11 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 4)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
+
             tab[index + 1][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -412,6 +463,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 1)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -419,6 +474,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 2)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -426,6 +485,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -433,6 +496,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 4)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
             tab[index + 1][index1] = '@';
@@ -449,6 +516,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 1)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -456,6 +527,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 2)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -463,6 +538,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -470,6 +549,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 4)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
             tab[index + 1][index1] = '@';
@@ -486,6 +569,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 1)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1 + 2] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -493,6 +580,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 2)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index + 1][index1] = '@';
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
@@ -500,6 +591,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
@@ -507,6 +602,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 4)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 2][index1] = '@';
@@ -523,6 +622,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 1)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index][index1 + 2] = '@';
@@ -530,6 +633,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 2)
         {
+            if (Colonne == 'J')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index + 1][index1 + 1] = '@';
             tab[index + 1][index1 + 2] = '@';
@@ -537,6 +644,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1 + 1] = '@';
             tab[index + 2][index1 + 1] = '@';
@@ -544,6 +655,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 4)
         {
+            if (Colonne == 'J' || Colonne == 'I')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index][index1 + 1] = '@';
             tab[index + 1][index1] = '@';
@@ -567,6 +682,10 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
         }
         if (orientation == 3 || orientation == 4)
         {
+            if (Colonne == 'J' || Colonne == 'I' || Colonne == 'H')
+            {
+                return 0;
+            }
             tab[index][index1] = '@';
             tab[index + 1][index1] = '@';
             tab[index + 2][index1] = '@';
@@ -575,6 +694,11 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
     }
     if (piece == 6)
     {
+        if (Colonne == 'J')
+        {
+            return 0;
+        }
+
         int index = SearchColumn(Colonne, tabAL, 6);
         int index1 = SearchLine(index, tab, 6, orientation);
         if (index1 == 0)
@@ -590,6 +714,11 @@ int PartPosition(int Colonne, char tab[10][10], char tabAL[10], int orientation,
 }
 int CalculScore(char tab[10][10], int TabPlein[10])
 {
+    /*
+To verify if the line is full or not and add 10 to score if yes.
+          +TabPlein : Table of integers maybe have 0 or 1 : 1 if line is full, 0 if not.
+          +TableGame : Table to save the pieces in the grid (TableGame[i] maybe equal to @ or space).
+*/
     int i, j, k;
     int Score = 0;
     for (i = 0; i < 10; i++)
@@ -630,6 +759,11 @@ int CalculScore(char tab[10][10], int TabPlein[10])
 }
 void SaveScore(char Name[], int Score)
 {
+    /*
+Open a file to save the score and the player's name.
+                +Name : String of the player's name.
+                +Score : An integer for the score.
+*/
     FILE *fichier = NULL;
     fichier = fopen("Score.txt", "a+");
     fprintf(fichier, "%s %d\n", Name, Score);
@@ -637,6 +771,10 @@ void SaveScore(char Name[], int Score)
 }
 void DisplayBest(char FileName[])
 {
+    /*
+Open the file to read all the scores and display the best one with player's name.
+               +FileName : String for the name of file. example(Tetris.txt).
+*/
     char ScoreTest[20];
     char Name[30];
     int score = 0;
@@ -654,14 +792,15 @@ void DisplayBest(char FileName[])
         }
     }
     fclose(fichier);
-    couleur_char (ROUGE);
+    couleur_char(ROUGE);
+    printf("GAME OVER !");
     printf("Meilleur score est : %d pour le joueur : %s\n", score, PlayerName);
-    couleur_char (BLANC);
+    couleur_char(BLANC);
 }
-int RandomOrientation()
+int RandomOrientation() // To choose a random Orientation
 {
-int i ;
-srand(time(NULL));
-i=(rand()%4);
- return i ;
+    int i;
+    srand(time(NULL));
+    i = (rand() % 4);
+    return i;
 }
